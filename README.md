@@ -63,7 +63,7 @@ const db = new DB({
 ### `db.mimeToExtensions(mimeType)` or its alias `db.getExtensions(mimeType)`
 Returns a promise that fulfills with an array of file-extensions.
 
-- `mimeType`
+`mimeType`
 
 String representing a MIME-type with [structure](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types#structure_of_a_mime_type):
 ```
@@ -86,7 +86,7 @@ console.log(await db.getExtensions('application/javascript; charset=utf-8'));
 ### `db.extensionToMimes(extension)` or its alias `db.getTypes(extension)`
 Returns a promise that fulfills with an array of MIME-types.
 
-- `extension`
+`extension`
 
 String representing either of
 - path, e.g. `dir/subdir/file.ext`

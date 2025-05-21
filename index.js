@@ -4,7 +4,10 @@
 export default class {
   cache; // Holds the LRU-Cache if any
   #cacheInit = {}; // Holds LRU-Cache init object
-  fetch = globalThis.fetch;
+
+  async fetch (...args) {
+    return globalThis.fetch(...args);
+  }
 
   constructor ({ fetch, cacheMaxEntries } = {}) {
     if (fetch) this.fetch = fetch;
