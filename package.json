@@ -30,16 +30,11 @@
     "semver": "scripts/get-version.sh",
     "test": "node test.js"
   },
-  "version": "1.0.0-preview.1",
+  "version": "1.0.0",
   "files": [
     "README.md",
     "LICENSE",
     "index.js",
     "utils"
-  ],
-  "browser": "./index.js",
-  "exports": {
-    ".": "./index.js",
-    "./utils/lru-cache.min.js": "./utils/lru-cache.min.js"
-  }
+  ]
 }
