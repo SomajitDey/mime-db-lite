@@ -1,0 +1,48 @@
+{
+  "name": "mime-db-lite",
+  "description": "A tiny, lightweight JavaScript API to query mime-db (Media-type / MIME-type database).",
+  "repository": "github:SomajitDey/mime-db-lite",
+  "homepage": "https://github.com/SomajitDey/mime-db-lite#mime-db-lite",
+  "author": "Somajit Dey (https://github.com/SomajitDey)",
+  "license": "MIT",
+  "funding": "https://buymeacoffee.com/somajitdey",
+  "keywords": [
+    "mime",
+    "types",
+    "mime-db",
+    "cdn",
+    "browser",
+    "frontend",
+    "dynamic-import",
+    "media-type",
+    "mime-type",
+    "file-extension",
+    "file-type",
+    "extensions",
+    "database"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "lru-cache": "^11.1.0",
+    "semistandard": "^17.0.0"
+  },
+  "scripts": {
+    "lint": "semistandard --fix",
+    "build": "scripts/build.sh",
+    "bump": "scripts/set-version.sh",
+    "semver": "scripts/get-version.sh",
+    "test": "node test.js"
+  },
+  "version": "0.1.0",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "index.js",
+    "utils"
+  ],
+  "browser": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./utils/lru-cache.min.js": "./utils/lru-cache.min.js"
+  }
+}

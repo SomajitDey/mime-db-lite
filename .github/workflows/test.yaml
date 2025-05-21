@@ -1,0 +1,27 @@
+# Brief: Tests the API in the database branch
+# Note: Must be run on default branch
+
+name: Test
+
+on:
+  workflow_run: # Run whenever the Build workflow completes
+    workflows: [Build]
+    types: [completed]
+  workflow_dispatch: # Enables manual triggering
+
+jobs:
+
+  test:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out database branch
+        uses: actions/checkout@v4
+      - name: Set up Node runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          check-latest: false
+      - name: Run tests
+        run: npm test
