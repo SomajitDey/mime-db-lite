@@ -10,10 +10,7 @@
     "mime",
     "types",
     "mime-db",
-    "cdn",
-    "browser",
-    "frontend",
-    "dynamic-import",
+    "mime-db-cdn",
     "media-type",
     "mime-type",
     "file-extension",
@@ -33,7 +30,7 @@
     "semver": "scripts/get-version.sh",
     "test": "node test.js"
   },
-  "version": "0.1.0",
+  "version": "1.0.0-pendingDocs",
   "files": [
     "README.md",
     "LICENSE",
