@@ -13,7 +13,7 @@ export default class {
 
   async #getCache () {
     if (this.cache === undefined && Object.keys(this.#cacheInit).length !== 0) {
-      const { LRUCache } = await import('lru-cache');
+      const { LRUCache } = await import('./utils/lru-cache.min.js');
       this.cache = new LRUCache(this.#cacheInit);
     }
     return this.cache;
