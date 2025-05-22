@@ -21,6 +21,7 @@
   "type": "module",
   "devDependencies": {
     "lru-cache": "^11.1.0",
+    "mime-db-cdn": "^4.0.0-1.54.0",
     "semistandard": "^17.0.0"
   },
   "scripts": {
@@ -30,11 +31,13 @@
     "semver": "scripts/get-version.sh",
     "test": "node test.js"
   },
-  "version": "1.0.0",
+  "version": "2.0.0",
   "files": [
     "README.md",
     "LICENSE",
     "index.js",
     "utils"
-  ]
+  ],
+  "browser": "./index.js",
+  "exports": "./index.js"
 }

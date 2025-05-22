@@ -78,6 +78,21 @@ describe('Testing index.js', () => {
     );
   });
 
+  test('extensionToMime() or getType()', async () => {
+    assert.equal(
+      await dbWithCache.getType('dir/subdir/package.deb'),
+      'application/x-debian-package'
+    );
+  });
+
+  test('Error for extensionToMime()', async () => {
+    const fakeExtension = 'extension';
+    assert.rejects(
+      dbWithCache.extensionToMime(fakeExtension),
+      { message: 'Not Found' }
+    );
+  });
+
   test('LRU Cache eviction', async () => {
     // Entry #1
     await dbWithCache.getTypes('exe');
@@ -96,15 +111,15 @@ describe('Testing index.js', () => {
     assert.ok(cache.has('mp4'), new Error('Cache is not getting set'));
     assert.ok(cache.has('application/javascript'), new Error('Cache is not getting set'));
   });
-  
+
   test('Custom fetch', async () => {
-      const extensions = ['test', 'string'];
-      const dbWithCustomFetch = new DB({
-        fetch: async () => new Response(JSON.stringify({ extensions })) 
-      });
-      assert.deepStrictEqual(
-        await dbWithCustomFetch.getExtensions('Test/MIME; any=random'),
-        extensions
-      );    
-  })
+    const extensions = ['test', 'string'];
+    const dbWithCustomFetch = new DB({
+      fetch: async () => new Response(JSON.stringify({ extensions }))
+    });
+    assert.deepStrictEqual(
+      await dbWithCustomFetch.getExtensions('Test/MIME; any=random'),
+      extensions
+    );
+  });
 });

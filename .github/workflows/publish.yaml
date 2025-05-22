@@ -1,5 +1,4 @@
-# Brief: Publish database branch as NPM package post successful testing
-# Note: Must be run on default branch
+# Brief: Publish as git-tag and NPM package post successful testing
 # Ref: https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-nodejs-packages
 
 name: Publish NPM package
@@ -13,6 +12,9 @@ jobs:
 
   publish:
     
+    permissions:
+      contents: write
+
     runs-on: ubuntu-latest
 
     if: github.event.workflow_run.conclusion == 'success'
@@ -28,7 +30,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Publish # Only if not up-to-date
         run: |
-          if [ $(scripts/get-version.sh) != $(scripts/latest-version-npm.sh) ]; then
+          version=$(scripts/get-version.sh)
+          if [ ${version} != $(scripts/latest-version-npm.sh) ]; then
+            git tag ${version} && git push --tags origin ${version}
             npm publish
           else
             echo 'Up-to-date. Nothing new to publish.'
