@@ -1,13 +1,22 @@
 # mime-db-lite
 [![NPM Version](https://img.shields.io/npm/v/mime-db-lite)](https://www.npmjs.com/package/mime-db-lite)
+![JavaScript](https://img.shields.io/badge/ECMAScriptModule-black?logo=javascript&logoColor=F7DF1E)
 [![Test](https://github.com/SomajitDey/mime-db-lite/actions/workflows/test.yaml/badge.svg)](https://github.com/SomajitDey/mime-db-lite/actions/workflows/test.yaml)
 [![Publish NPM package](https://github.com/SomajitDey/mime-db-lite/actions/workflows/publish.yaml/badge.svg)](https://github.com/SomajitDey/mime-db-lite/actions/workflows/publish.yaml)
 
-A tiny, lightweight, portable JavaScript API to query the complete [mime-db](https://github.com/jshttp/mime-db) (Media-type / MIME-type database).
+A tiny, lightweight, portable [JavaScript module](./index.js) to query the complete [mime-db](https://github.com/jshttp/mime-db) (a popular Media-type / MIME-type / Content-type database). Data is actually sourced from [mime-db-cdn](https://github.com/SomajitDey/mime-db-cdn), which mirrors [mime-db](https://github.com/jshttp/mime-db) with added features.
 
-Data is actually sourced from [mime-db-cdn](https://github.com/SomajitDey/mime-db-cdn), which mirrors [mime-db](https://github.com/jshttp/mime-db) with added features.
+🚀 Consumes less run-time memory by fetching data as and when needed, with optional caching. Ideal for low footprint applications.
 
-## Install and/or Import
+🚀 Cross-platform: Runs on browsers, server-side (e.g. NodeJS) or serverless (e.g. Cloudflare Workers V8 isolates).
+
+🚀 Standard: [ESM](https://nodejs.org/api/esm.html#modules-ecmascript-modules).
+
+🚀 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)-based; exports `async` methods.
+
+🚀 Accepts custom [`fetch()`](https://www.w3schools.com/jsref/api_fetch.asp) method, if any.
+
+## Install and `import`
 For browsers:
 ```html
 <script type="module">
@@ -130,6 +139,12 @@ Examples:
 console.log(JSON.stringify(await db.query('application/javascript')));
 // Prints '{"source":"apache","charset":"UTF-8","compressible":true,"extensions":["js"]}'
 ```
+
+### `DB.mimeDbCdnVersion`
+A constant that stores the [mime-db-cdn](https://www.npmjs.com/package/mime-db-cdn) release version data is fetched from.
+
+### `DB.cdnBase`
+A constant that stores the CDN via which data is accessed.
 
 # Contribute
 To register new media types in the database, [contribute directly to mime-db](https://github.com/jshttp/mime-db#contributing).

@@ -1,4 +1,5 @@
 import DB from './index.js';
+import semverSatisfies from 'semver/functions/satisfies.js';
 import { describe, test } from 'node:test';
 import assert from 'node:assert';
 
@@ -6,6 +7,18 @@ const dbWithCache = new DB({ cacheMaxEntries: 2 }); // DONOT change the 2. Used 
 const dbWithoutCache = new DB();
 
 describe('Testing index.js', () => {
+  test('Hard-coded mime-db-cdn version must match that in devDependencies of package.json', async () => {
+    const {
+      default: {
+        devDependencies: {
+          'mime-db-cdn': depVersionRange
+        }
+      }
+    } = await import('./package.json', { with: {type: 'json'} });
+    console.log(typeof semverSatisfies, depVersionRange, DB.mimeDbCdnVersion);
+    assert.ok(semverSatisfies(DB.mimeDbCdnVersion, depVersionRange));
+  })
+
   test('mimeToExtensions() or getExtensions()', async () => {
     const extension = 'js';
     const mimeTypeSpecs = [

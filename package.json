@@ -13,6 +13,7 @@
     "mime-db-cdn",
     "media-type",
     "mime-type",
+    "content-type",
     "file-extension",
     "file-type",
     "extensions",
@@ -22,7 +23,8 @@
   "devDependencies": {
     "lru-cache": "^11.1.0",
     "mime-db-cdn": "^4.0.0-1.54.0",
-    "semistandard": "^17.0.0"
+    "semistandard": "^17.0.0",
+    "semver": "^7.7.2"
   },
   "scripts": {
     "lint": "semistandard --fix",
@@ -31,7 +33,7 @@
     "semver": "scripts/get-version.sh",
     "test": "node test.js"
   },
-  "version": "2.0.0",
+  "version": "2.1.0",
   "files": [
     "README.md",
     "LICENSE",

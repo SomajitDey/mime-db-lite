@@ -1,12 +1,12 @@
 // Brief: Access the database at https://github.com/SomajitDey/mime-db-cdn/tree/database
 // Note: Must be runtime agnostic, i.e. should work in browsers, Node.js and server-less V8.
 
-// Release/version of mime-db-cdn from which data is fetched
-// Must be same as in "devDependencies" of ./package.json
-const mimeDbCdnVersion = '4.0.0-1.54.0';
-const cdnBase = `https://cdn.jsdelivr.net/npm/mime-db-cdn@${mimeDbCdnVersion}`;
+export default class DB {
+  // Release/version of mime-db-cdn from which data is fetched
+  // Must be same as in "devDependencies" of ./package.json
+  static mimeDbCdnVersion = '4.0.0-1.54.0';
+  static cdnBase = `https://cdn.jsdelivr.net/npm/mime-db-cdn@${DB.mimeDbCdnVersion}`;
 
-export default class {
   cache; // Holds the LRU-Cache if any. Kept public to inspect during testing/debugging.
   #cacheInit = {}; // Holds LRU-Cache init object
 
@@ -33,7 +33,7 @@ export default class {
   // Returns: <Object>, JSON value against the provided MIME-type key in mime-db
   // On error, rejects with message: 'Not Found'
   async query (mimeType) {
-    const dbUrl =  cdnBase + `/mime-types/${mimeType}/data.json`;
+    const dbUrl = DB.cdnBase + `/mime-types/${mimeType}/data.json`;
     return this.fetch(dbUrl)
       .then((response) => {
         if (response.status === 404) throw new Error('Not Found');
@@ -69,7 +69,7 @@ export default class {
     const cache = await this.#getCache();
     let mimeTypes = cache?.get(extension);
     if (mimeTypes === undefined) {
-      const dbUrl = cdnBase + `/extensions/${extension}/data.json`;
+      const dbUrl = DB.cdnBase + `/extensions/${extension}/data.json`;
       (
         { mimeTypes } = await this.fetch(dbUrl)
           .then((response) => {
