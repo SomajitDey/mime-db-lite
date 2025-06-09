@@ -22,5 +22,10 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci # Clean, frozen install. Doesn't modify package.json or package-lock.json
+      - name: Build
+        run: npm run build
+      - name: Fail if build step modifies/adds to codebase/repository
+        run: git diff HEAD --quiet
       - name: Run tests
+        if: ${{ success() }}
         run: npm test

@@ -20,8 +20,8 @@ A tiny, lightweight, portable [JavaScript module](./index.js) to query the compl
 For browsers:
 ```html
 <script type="module">
-    import DB from 'https://cdn.jsdelivr.net/npm/mime-db-lite@2.0.0/index.min.js';
-    // Above, replace 2.0.0 with the actual version you'd be using, or use 'latest'
+    import DB from 'https://cdn.jsdelivr.net/npm/mime-db-lite@2.1.1/index.min.js';
+    // Above, replace 2.1.1 with the actual version you'd be using, or use 'latest'
     
     // Your code here ...
 </script>
