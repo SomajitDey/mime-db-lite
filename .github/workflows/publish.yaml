@@ -4,9 +4,10 @@
 name: Publish NPM package
 
 on:
-  workflow_run: # Run whenever the Test workflow completes
+  workflow_run: # Run whenever the Test workflow completes on the main branch
     workflows: [Test]
     types: [completed]
+    branches: [main]
 
 jobs:
 
