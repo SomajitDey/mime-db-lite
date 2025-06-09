@@ -1,5 +1,7 @@
 // Brief: Access the database at https://github.com/SomajitDey/mime-db-cdn/tree/database
 // Note: Must be runtime agnostic, i.e. should work in browsers, Node.js and server-less V8.
+// Dynamic imports:
+//  ./utils/lru-cache.min.js; See ./scripts/build.sh on how it is produced.
 
 export default class DB {
   // Release/version of mime-db-cdn from which data is fetched
